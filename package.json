@@ -1,6 +1,6 @@
 {
   "name": "keycombo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "detect key combinations",
   "main": "index.js",
   "scripts": {
