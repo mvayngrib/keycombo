@@ -19,12 +19,21 @@ function toObject(arr) {
   return map;
 }
 
+function size(obj) {
+  var i = 0;
+  for (var p in obj) {
+    i++;
+  }
+
+  return i;
+}
+
 module.exports = function(el) {
-  var keys = {};
+  var keys;
   var registry = [];
 
   function reset() {
-    keys = {};
+    keys = Object.create(null);
   }
 
   /**
@@ -64,8 +73,10 @@ module.exports = function(el) {
 
   el.addEventListener('keydown', function(e) {
     keys[e.keyCode] = true;
-    testCombos();
+    if (size(keys) > 1) testCombos();
   });
+
+  reset();
 
   return {
     on: onCombo,
