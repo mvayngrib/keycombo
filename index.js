@@ -55,13 +55,13 @@ module.exports = function(el) {
     });
   }
 
-  function testCombos() {
+  function testCombos(e) {
     registry.forEach(function(info) {
       for (var key in info.combo) {
         if (!keys[key]) return;
       }
 
-      info.handler();
+      info.handler(e);
     });
   }
 
@@ -73,7 +73,7 @@ module.exports = function(el) {
 
   el.addEventListener('keydown', function(e) {
     keys[e.keyCode] = true;
-    if (size(keys) > 1) testCombos();
+    if (size(keys) > 1) testCombos(e);
   });
 
   reset();
